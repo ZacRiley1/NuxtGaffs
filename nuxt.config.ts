@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -7,16 +7,27 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   app: {
     head: {
-      link: [
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap' }
-      ]
-    }
+      // link: [
+      //   {
+      //     rel: 'stylesheet',
+      //     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap',
+      //   },
+      // ],
+    },
   },
   vite: {
     plugins: [tailwindcss()],
   },
-
-  modules: ['shadcn-nuxt', '@nuxtjs/color-mode', '@nuxt/icon'],
+  modules: [
+    'shadcn-nuxt',
+    '@nuxtjs/color-mode',
+    '@nuxt/icon',
+    '@nuxt/eslint',
+    '@vueuse/motion/nuxt',
+    '@nuxt/image',
+    '@nuxt/fonts',
+  ],
+  plugins: ['~/plugins/motion.js'],
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -26,9 +37,9 @@ export default defineNuxtConfig({
      * Directory that the component lives in.
      * @default "./components/ui"
      */
-    componentDir: './components/ui'
+    componentDir: './components/ui',
   },
   colorMode: {
-    classSuffix: ''
-  }
-})
+    classSuffix: '',
+  },
+});
